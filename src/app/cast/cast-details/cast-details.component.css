@@ -1,0 +1,26 @@
+.table-container {
+    margin: 20px 0; /* Adjust margin as needed */
+    overflow: auto; /* Add overflow to enable scrolling if the table content exceeds the container */
+  }
+  
+.mat-elevation-z8 {
+  padding: 20px; /* Add padding to mat-elevation-z8 for spacing */
+}
+
+.mdc-data-table__cell 
+{
+  text-align: center;
+}
+
+.mdc-data-table__header-cell
+{
+  text-align: center;
+}
+
+.loader-container {
+  display: inline-grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}

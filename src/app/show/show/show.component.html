@@ -1,0 +1,39 @@
+<div class="container mt-5">
+   <h2 class="mb-4 text-center display-4 font-weight-bold">Explore Shows</h2>
+    <div class="input-group mb-3">
+      <span class="input-group-text bg-dark text-light" id="addon-wrapping">Search</span>
+      <input type="text"  class="form-control" placeholder="Title" aria-label="Title" aria-describedby="addon-wrapping" [(ngModel)]="searchText" (keyup)="onKeyUp($event)">
+    </div>
+    <div class="loader-container" *ngIf="isLoading">
+      <mat-spinner></mat-spinner>
+   </div>
+    <table  *ngIf="!isLoading" class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" (click)="onColumnHeaderClick('id')">id</th>
+          <th scope="col" (click)="onColumnHeaderClick('name')">name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let show of shows
+              | paginate
+                : {
+                    itemsPerPage: itemsPerPage,
+                    currentPage: pagination,
+                    totalItems: allShows
+                  }
+          "
+          (click)="onRowClick(show.id)">
+          <td scope="row">{{ show.id }}</td>
+          <td>{{ show.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <pagination-controls
+        (pageChange)="renderPage($event)"
+      ></pagination-controls>
+    </div>
+  </div>
